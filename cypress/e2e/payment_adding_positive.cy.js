@@ -1,4 +1,8 @@
+import FillPayment from './fill_payment'
+
 describe('Payment adding positive testing', () => {
+  const fillPayment = new FillPayment()
+
   beforeEach('Sign in', () => {
     cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/')
     cy.viewport(1920, 1080)
@@ -15,6 +19,24 @@ describe('Payment adding positive testing', () => {
   })
 
   it('Payment adding test 1', () => {
+    fillPayment.operationTypeIncome()
+    fillPayment.operationTypeExpense()
+
+
+    // cy.get('[data-field-name="operation"] .radio-group__checkbox--first')
+    //   .next()
+    //   .children('.form-field__field')
+    //   .children('.checkbox--no-appearance')
+    //   .children('.checkbox__content')
+    //   .children('.checkbox__icon')
+    //   .click()
+
+      // cy.get('[data-field-name="operation"] .radio-group__checkbox--first')
+      //   .next()
+      //   .find('.checkbox__icon')
+      //   .click()
+
+
     // // Тип операции	Доход/приход
     // cy.get('[data-field-name="operation"] .radio-group__checkbox--first .checkbox__icon')
     //   .should('have.class', 'checkbox__icon--checked')
@@ -110,14 +132,14 @@ describe('Payment adding positive testing', () => {
     // // Нажать кнопку "Добавить"
     // cy.get('.button--state-filled').click()
 
-    cy.get('.breadcrumb').contains('Платежи').parent().click()
-    // cy.wait(100)
-    cy.get('.typography--type-heading').should('contain', 'Платежи')
-    // cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/payments/')
-    cy.get('.input__content').type('Тест 1').type('{enter}').type('{enter}')
-    cy.contains('Тест 1').click()
-    cy.get('[data-field-name="operation"] .radio-group__checkbox--first .checkbox__icon')
-      .should('have.class', 'checkbox__icon--checked')
+    // cy.get('.breadcrumb').contains('Платежи').parent().click()
+    // // cy.wait(100)
+    // cy.get('.typography--type-heading').should('contain', 'Платежи')
+    // // cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/payments/')
+    // cy.get('.input__content').type('Тест 1').type('{enter}').type('{enter}')
+    // cy.contains('Тест 1').click()
+    // cy.get('[data-field-name="operation"] .radio-group__checkbox--first .checkbox__icon')
+    //   .should('have.class', 'checkbox__icon--checked')
 
 
 
