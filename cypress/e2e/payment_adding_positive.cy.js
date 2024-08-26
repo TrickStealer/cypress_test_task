@@ -1,10 +1,17 @@
 describe('Payment adding positive testing', () => {
   beforeEach('Sign in', () => {
     cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/')
+    cy.viewport(1920, 1080)
+    cy.location('protocol').should('eq', 'https:')
+
+
     cy.get('[type="email"]').type('admin@admin.ad')
     cy.get('[type="password"]').type('admin')
     cy.get('.button__content').click()
-      cy.get('.pageLayout__actions .button__content').click()
+    cy.get('.typography--type-heading').should('contain', 'Платежи')
+
+    cy.get('.pageLayout__actions .button__content').click()
+    cy.get('.typography--type-heading').should('contain', 'Добавить платёж')
   })
 
   it('Payment adding test 1', () => {
@@ -104,7 +111,8 @@ describe('Payment adding positive testing', () => {
     // cy.get('.button--state-filled').click()
 
     cy.get('.breadcrumb').contains('Платежи').parent().click()
-    cy.wait(100)
+    // cy.wait(100)
+    cy.get('.typography--type-heading').should('contain', 'Платежи')
     // cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/payments/')
     cy.get('.input__content').type('Тест 1').type('{enter}').type('{enter}')
     cy.contains('Тест 1').click()
