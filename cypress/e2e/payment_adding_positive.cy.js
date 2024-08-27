@@ -19,44 +19,25 @@ describe('Payment adding positive testing', () => {
   })
 
   it('Payment adding test 1', () => {
-    // fill.operationType_Income()                // Тип операции:	Доход/приход
-    // fill.description('Тест 1')                 // Описание:	Тест 1
-    // fill.statusActive()                        // Статус:	Активен
-    // fill.statusChecked()                       // Статус:	Проверен
-    // fill.amountPlan(2000)                      // Сумма план:	2000
-    // fill.amountFact(2000)                      // Сумма факт:	2000
-    // fill.paymentStatus_NotPayed()              // Статус оплаты:	Не оплачен
-    // fill.datePlan()                            // Дата план:	[Дата тестирования]
-    // fill.dateFact()                            // Дата факт:	[Дата тестирования]
-    // fill.source('Источник 1')                  // Источник:	Источник 1
-    // fill.sourceAdditional('Источник 1')        // Источник:	Источник 1
-    // fill.documentsStatus('Акт подписан')       // Статус документов:	Счёт выставлен
-    // fill.companyOwn('ИП Иванов Иван Иванович') // Юридическое лицо:	ИП Иванов Иван Иванович
-    // fill.companyClient('Контрагент 1')         // Контрагент:	Контрагент 1
-    // fill.accountSender('Счет отправителя 1')   // Счет отправителя:	Счет отправителя 1
-    // fill.accountRecipient('Счет получателя 1') // Счет получателя:	Счет получателя 1
-    // fill.tags(['Тэг 1', 'Тэг 2'])                       // Тэги	Тэг 1
+    fill.operationType_Income()                // Тип операции:	Доход/приход
+    fill.description('Тест 1')                 // Описание:	Тест 1
+    fill.statusActive()                        // Статус:	Активен
+    fill.statusChecked()                       // Статус:	Проверен
+    fill.amountPlan(2000)                      // Сумма план:	2000
+    fill.amountFact(2000)                      // Сумма факт:	2000
+    fill.paymentStatus_NotPayed()              // Статус оплаты:	Не оплачен
+    fill.datePlan()                            // Дата план:	[Дата тестирования]
+    fill.dateFact()                            // Дата факт:	[Дата тестирования]
+    fill.source('Источник 1')                  // Источник:	Источник 1
+    fill.sourceAdditional('Источник 1')        // Источник:	Источник 1
+    fill.documentsStatus('Акт подписан')       // Статус документов:	Счёт выставлен
+    fill.companyOwn('ИП Иванов Иван Иванович') // Юридическое лицо:	ИП Иванов Иван Иванович
+    fill.companyClient('Контрагент 1')         // Контрагент:	Контрагент 1
+    fill.accountSender('Счет отправителя 1')   // Счет отправителя:	Счет отправителя 1
+    fill.accountRecipient('Счет получателя 1') // Счет получателя:	Счет получателя 1
+    fill.tags(1)                               // Тэги:	Тэг 1
+    fill.bankID()                              // ID в банке	[Автоматически заполняется]
 
-
-
-
-    // // Тэги	Тэг 1
-    // cy.get('[data-field-name="tags"] .multiselect__placeholder')
-    //   .click()
-    // cy.get('[data-field-name="tags"] .multiselect__input')
-    //   .type('Тэг 1')
-    //   .type('{enter}')
-    //
-
-
-
-
-    
-    // // ID в банке	[Автоматически заполняется]
-    // cy.get('[data-field-name="external_source_id"] .input__input')
-    //   .should('be.disabled')
-    //
-    //
     // // Нажать кнопку "Добавить"
     // cy.get('.button--state-filled').click()
 

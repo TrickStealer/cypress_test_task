@@ -183,15 +183,33 @@ class FillPayment {
   }
 
   // Тэги
-  // tags(text){
-  //   for (i in text) {
-  //     cy.get('[data-field-name="tags"] .multiselect__placeholder')
-  //       .click()
-  //     cy.get('[data-field-name="tags"] .multiselect__input')
-  //       .type(text[i])
-  //       .type('{enter}')
-  //   }
-  // }
+  tags(number){
+    const tag = 'Тэг '
+    for (let i = 1; i <= number; i++) {
+      cy.get('[data-field-name="tags"] .multiselect__tags')
+        .click()
+      cy.get('[data-field-name="tags"] .multiselect__input')
+        .type(tag + i)
+        .type('{enter}')
+    }
+  }
+
+  bankID(){
+    cy.get('[data-field-name="external_source_id"] .input__input')
+      .should('be.disabled')
+  }
 }
 
 export default FillPayment
+
+
+
+
+
+// for (i in text) {
+//   cy.get('[data-field-name="tags"] .multiselect__placeholder')
+//     .click()
+//   cy.get('[data-field-name="tags"] .multiselect__input')
+//     .type(text[i])
+//     .type('{enter}')
+// }
