@@ -1,4 +1,10 @@
 class FillPayment {
+  // Открыть форму добавления платежа
+  openForm(){
+    cy.get('.pageLayout__actions .button__content').click()
+    cy.get('.typography--type-heading').should('contain', 'Добавить платёж')
+  }
+
   // Тип операции "Доход/приход"
   operationType_Income() {
     cy.get('[data-field-name="operation"] .radio-group__checkbox--first')
@@ -194,22 +200,22 @@ class FillPayment {
     }
   }
 
+  // ID в банке
   bankID(){
     cy.get('[data-field-name="external_source_id"] .input__input')
       .should('be.disabled')
   }
+
+  // Нажать кнопку "Добавить"
+  addPaymentToTable(){
+    cy.get('.button--state-filled').click()
+  }
+
+  // Вернуться на страницу "Платежи"
+  closeForm(){
+    cy.get('.breadcrumb').contains('Платежи').parent().click()
+    cy.get('.typography--type-heading').should('contain', 'Платежи')
+  }
 }
 
 export default FillPayment
-
-
-
-
-
-// for (i in text) {
-//   cy.get('[data-field-name="tags"] .multiselect__placeholder')
-//     .click()
-//   cy.get('[data-field-name="tags"] .multiselect__input')
-//     .type(text[i])
-//     .type('{enter}')
-// }
