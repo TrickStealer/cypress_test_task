@@ -1,7 +1,9 @@
 import FillPayment from './fill_payment'
+import FindChangePayment from './find_change_payment'
 
 describe('Payment adding positive testing', () => {
   const fill = new FillPayment()
+  const find = new FindChangePayment()
 
   beforeEach('Sign in', () => {
     cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/')
@@ -45,21 +47,12 @@ describe('Payment adding positive testing', () => {
     fill.addPaymentToTable()                    // Нажать кнопку "Добавить"
     fill.closeForm()                            // Вернуться на страницу "Платежи"
 
-    // cy.get('.breadcrumb').contains('Платежи').parent().click()
-    // // cy.wait(100)
-    // cy.get('.typography--type-heading').should('contain', 'Платежи')
+    find.findPayment('Тест 999')  // Найти созданный платёж
 
-    // // cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/payments/')
-    // cy.get('.input__content').type('Тест 1').type('{enter}').type('{enter}')
     // cy.contains('Тест 1').click()
     // cy.get('[data-field-name="operation"] .radio-group__checkbox--first .checkbox__icon')
     //   .should('have.class', 'checkbox__icon--checked')
 
-
-
-
-
-    //Открыть таблицу и ввести в поле поиска "Тест 1"
     cy.wait(10000)
 
   })
