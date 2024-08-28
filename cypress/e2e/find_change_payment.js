@@ -5,23 +5,12 @@ class FindChangePayment {
     cy.contains(text).should('be.visible')
   }
 
-  // Открыть платёж
+  // Открыть платёж и проврить, что это подходящий
   openPayment(text){
     cy.contains(text).click()
-    cy.get('[data-field-name="description"] .form-field').invoke('text').should('include', 'Тест 999')
-
-
-    // cy.get('[data-field-name="description"] .form-field').focus()
-    // cy.focused().invoke('val').should('include', text);
-
-
-    // cy.get('[data-field-name="description"] .form-field').invoke('text').should('include', 'Тест 999')
-      // .should('have.value', text)
-
-    // cy.window().then((win) => {
-    //   // Проверяем, что текст присутствует в переменной JavaScript
-    //   expect(win.someJavaScriptVariable).to.include('Тест 999');
-    // });
+    cy.get('[data-field-name="description"] .input__input')
+      .invoke('val')
+      .should('eq', text)
   }
 }
 
