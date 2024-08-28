@@ -2,20 +2,14 @@ import FillPayment from './fill_payment'
 import FindChangePayment from './find_change_payment'
 import VisitLoginSite from './visit_login_site'
 
-const SITE_ADDRESS = 'https://fabrique:fabrique@finance.dev.fabrique.studio/'
-const SCREEN_SIZE = [1920, 1080]
-
-const EMAIL = 'admin@admin.ad'
-const PASSWORD = 'admin'
-
 describe('Payment adding positive testing', () => {
   const fill = new FillPayment()
   const find = new FindChangePayment()
   const visit = new VisitLoginSite()
 
   beforeEach('Log in', () => {
-    visit.site(SITE_ADDRESS, SCREEN_SIZE)
-    visit.login(EMAIL, PASSWORD)
+    visit.site('/')
+    visit.loginFromJson('user-admin')
   })
 
   it('Payment adding and deletion test 1', () => {
@@ -53,7 +47,7 @@ describe('Payment adding positive testing', () => {
     find.openPayment('Тест 999')
     find.deletePayment()
 
-    cy.wait(20000)
+    cy.wait(10000)
 
   })
 })
