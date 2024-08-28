@@ -2,10 +2,11 @@ import FillPayment from './fill_payment'
 import FindChangePayment from './find_change_payment'
 import VisitLoginSite from './visit_login_site'
 
-const address = 'https://fabrique:fabrique@finance.dev.fabrique.studio/'
-const size = [1920, 1080]
-const email = 'admin@admin.ad'
-const password = 'admin'
+const SITE_ADDRESS = 'https://fabrique:fabrique@finance.dev.fabrique.studio/'
+const SCREEN_SIZE = [1920, 1080]
+
+const EMAIL = 'admin@admin.ad'
+const PASSWORD = 'admin'
 
 describe('Payment adding positive testing', () => {
   const fill = new FillPayment()
@@ -13,8 +14,8 @@ describe('Payment adding positive testing', () => {
   const visit = new VisitLoginSite()
 
   beforeEach('Log in', () => {
-    visit.site(address, size)
-    visit.login(email, password)
+    visit.site(SITE_ADDRESS, SCREEN_SIZE)
+    visit.login(EMAIL, PASSWORD)
   })
 
   it('Payment adding test 1', () => {
