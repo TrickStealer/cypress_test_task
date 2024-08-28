@@ -5,7 +5,7 @@ class FindChangePayment {
     cy.get('span').contains(text).should('be.visible')
   }
 
-  // Открыть платёж и проврить, что это подходящий
+  // Открыть платёж по надписи в описании и проверить, что это подходящий
   openPayment(text){
     cy.get('span').contains(text).parents('.table__record').click()
     cy.get('.typography--type-heading')
