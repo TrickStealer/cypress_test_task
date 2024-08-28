@@ -1,20 +1,15 @@
 import FillPayment from './fill_payment'
 import FindChangePayment from './find_change_payment'
+import VisitLoginSite from './visit_login_site'
 
 describe('Payment adding positive testing', () => {
   const fill = new FillPayment()
   const find = new FindChangePayment()
+  const visit = new VisitLoginSite()
 
-  beforeEach('Sign in', () => {
-    cy.visit('https://fabrique:fabrique@finance.dev.fabrique.studio/')
-    cy.viewport(1920, 1080)
-    cy.location('protocol').should('eq', 'https:')
-
-
-    cy.get('[type="email"]').type('admin@admin.ad')
-    cy.get('[type="password"]').type('admin')
-    cy.get('.button__content').click()
-    cy.get('.typography--type-heading').should('contain', 'Платежи')
+  beforeEach('Log in', () => {
+    visit.site('https://fabrique:fabrique@finance.dev.fabrique.studio/', [1920, 1080])
+    visit.login('admin@admin.ad', 'admin')
   })
 
   it('Payment adding test 1', () => {
