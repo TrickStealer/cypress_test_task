@@ -29,7 +29,7 @@ describe('Payment adding positive testing', () => {
 
     fill.source('Источник 1')                   // Источник:	Источник 1
     fill.sourceAdditional('Источник 1')         // Источник:	Источник 1
-    fill.documentsStatus('Акт подписан')        // Статус документов:	Счёт выставлен
+    fill.documentsStatus('Счёт выставлен')      // Статус документов:	Счёт выставлен
 
     fill.companyOwn('ИП Иванов Иван Иванович')  // Юридическое лицо:	ИП Иванов Иван Иванович
     fill.companyClient('Контрагент 1')          // Контрагент:	Контрагент 1
