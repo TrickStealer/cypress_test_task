@@ -1,3 +1,20 @@
+// Получение текущей даты
+function currentDate(){
+  let current_date = new Date();
+  const day = current_date.getDate()
+  const day_string = day < 10 ? '0' + day : day
+
+  const month = current_date.getMonth() + 1
+  const month_string = month < 10 ? '0' + month : month
+
+  const year = current_date.getFullYear()
+  const result_string = day + '.' + month_string + '.' + year
+  return result_string
+}
+
+const CURRENT_DATE = currentDate()
+
+
 class FillPayment {
   // Открыть форму добавления платежа
   openForm(){
@@ -39,6 +56,9 @@ class FillPayment {
   description(text) {
     cy.get('[data-field-name="description"] .form-field')
       .type(text)
+    cy.get('[data-field-name="description"] .input__input')
+      .invoke('val')
+      .should('eq', text)
   }
 
   // Статус "Активен"
@@ -63,12 +83,14 @@ class FillPayment {
   amountPlan(amount) {
     cy.get('[data-field-name="amount_plan"] .input__input')
       .type(amount)
+      .should('have.value', amount)
   }
 
   // Сумма факт
   amountFact(amount) {
     cy.get('[data-field-name="amount_fact"] .input__input')
       .type(amount)
+      .should('have.value', amount)
   }
 
   // Статус оплаты "Не оплачен"
@@ -106,6 +128,8 @@ class FillPayment {
       .click()
     cy.get('.dp-today')
       .click()
+    cy.get('[data-field-name="date_plan"] .date__input')
+      .should('have.value', CURRENT_DATE)
   }
 
   // Дата факт (пока можно ставить только сегодняшнюю дату)
@@ -114,6 +138,8 @@ class FillPayment {
       .click()
     cy.get('.dp-today')
       .click()
+    cy.get('[data-field-name="date_plan"] .date__input')
+      .should('have.value', CURRENT_DATE)
   }
 
   // Источник
@@ -122,13 +148,19 @@ class FillPayment {
       .click()
     cy.get('[data-field-name="source"] .multiselect__input')
       .type(text)
-      .type('{enter}')
+    cy.get('[data-field-name="source"] .multiselect__option')
+      .contains(text)
+      .click()
+    cy.get('[data-field-name="source"] .multiselect__single')
+      .should('contain', text)
   }
 
   // Источник уточнение
   sourceAdditional(text){
     cy.get('[data-field-name="source_additional_id"] .input__input')
       .type(text)
+      .invoke('val')
+      .should('eq', text)
   }
 
   // Статус документов. Варианты переменной text:
@@ -146,6 +178,8 @@ class FillPayment {
           cy.get('[data-field-name="source_status"] .multiselect__option')
             .contains(text)
             .click()
+          cy.get('[data-field-name="source_status"] .multiselect__single')
+            .should('contain', text)
     }
     else {
       assert(false, 'Incorrect input in FillPayment.documentsStatus(status)')
@@ -158,7 +192,11 @@ class FillPayment {
       .click()
     cy.get('[data-field-name="company_own"] .multiselect__input')
       .type(text)
-      .type('{enter}')
+    cy.get('[data-field-name="company_own"] .multiselect__option')
+      .contains(text)
+      .click()
+    cy.get('[data-field-name="company_own"] .multiselect__single')
+      .should('contain', text)
   }
 
   // Контрагент
@@ -167,7 +205,11 @@ class FillPayment {
       .click()
     cy.get('[data-field-name="company_client"] .multiselect__input')
       .type(text)
-      .type('{enter}')
+    cy.get('[data-field-name="company_client"] .multiselect__option')
+      .contains(text)
+      .click()
+    cy.get('[data-field-name="company_client"] .multiselect__single')
+      .should('contain', text)
   }
 
   // Счет отправителя
@@ -176,7 +218,11 @@ class FillPayment {
       .click()
     cy.get('[data-field-name="account_sender"] .multiselect__input')
       .type(text)
-      .type('{enter}')
+    cy.get('[data-field-name="account_sender"] .multiselect__option')
+      .contains(text)
+      .click()
+    cy.get('[data-field-name="account_sender"] .multiselect__single')
+      .should('contain', text)
   }
 
   // Счет получателя
@@ -185,7 +231,11 @@ class FillPayment {
       .click()
     cy.get('[data-field-name="account_recipient"] .multiselect__input')
       .type(text)
-      .type('{enter}')
+    cy.get('[data-field-name="account_recipient"] .multiselect__option')
+      .contains(text)
+      .click()
+    cy.get('[data-field-name="account_recipient"] .multiselect__single')
+      .should('contain', text)
   }
 
   // Тэги
@@ -197,6 +247,9 @@ class FillPayment {
       cy.get('[data-field-name="tags"] .multiselect__input')
         .type(tag + i)
         .type('{enter}')
+      cy.get('[data-field-name="tags"] .multiselect__tag')
+        .children()
+        .should('contain', tag + i)
     }
   }
 

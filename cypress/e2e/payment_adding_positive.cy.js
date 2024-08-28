@@ -18,7 +18,7 @@ describe('Payment adding positive testing', () => {
     visit.login(EMAIL, PASSWORD)
   })
 
-  it('Payment adding test 1', () => {
+  it('Payment adding and deletion test 1', () => {
     fill.openForm()                             // Открыть форму добавления платежа
 
     fill.operationType_Income()                 // Тип операции:	Доход/приход
@@ -42,22 +42,18 @@ describe('Payment adding positive testing', () => {
     fill.accountSender('Счет отправителя 1')    // Счет отправителя:	Счет отправителя 1
     fill.accountRecipient('Счет получателя 1')  // Счет получателя:	Счет получателя 1
 
-    fill.tags(1)                                // Тэги:	Тэг 1
+    fill.tags(2)                                // Тэги:	Тэг 1
     fill.bankID()                               // ID в банке	[Автоматически заполняется]
 
     fill.addPaymentToTable()                    // Нажать кнопку "Добавить"
     fill.closeForm()                            // Вернуться на страницу "Платежи"
 
+    // Поиск и удаление добавленного платежа
     find.findPayment('Тест 999')
     find.openPayment('Тест 999')
     find.deletePayment()
 
-
-    cy.wait(10000)
+    cy.wait(20000)
 
   })
-
-  // it('Payment adding test 2', () => {
-  //   cy.get('[data-field-name="description"] .form-field').type('Test 2')
-  // })
 })

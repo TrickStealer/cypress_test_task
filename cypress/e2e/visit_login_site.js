@@ -13,8 +13,8 @@ class VisitLoginSite {
 
   // Авторизация на сайте
   login(email, password){
-    cy.get('[type="email"]').type(email)
-    cy.get('[type="password"]').type(password)
+    cy.get('[type="email"]').type(email).should('have.value', email)
+    cy.get('[type="password"]').type(password).should('have.value', password)
     cy.get('.button__content').click()
     cy.get('.typography--type-heading').should('contain', 'Платежи')
   }
