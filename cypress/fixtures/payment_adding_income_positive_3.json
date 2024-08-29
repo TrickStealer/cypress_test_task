@@ -1,0 +1,25 @@
+{
+  "operationType": "income",
+  "description": "Test 3",
+  "statusActive": true,
+  "statusChecked": true,
+
+  "amountPlan": 0,
+  "amountFact": 2000,
+  "paymentStatus": "PartlyPayed",
+
+  "datePlan": "current",
+  "dateFact": "",
+
+  "source": "Источник 3",
+  "sourceAdditional": "",
+  "documentsStatus": "Акт отправлен",
+
+  "companyOwn": "",
+  "companyClient": "",
+  "accountSender": "Счет отправителя 1",
+  "accountRecipient": "Счет получателя 1",
+
+  "tags": 5,
+  "bankID": "disable"
+}

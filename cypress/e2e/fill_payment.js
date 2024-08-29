@@ -77,9 +77,15 @@ class FillPayment {
 
   // Сумма план
   amountPlan(amount) {
-    cy.get('[data-field-name="amount_plan"] .input__input')
-      .type(amount)
-      .should('have.value', amount)
+    if (amount != "") {
+      cy.get('[data-field-name="amount_plan"] .input__input')
+        .type(amount)
+        .should('have.value', amount)
+    }
+    else {
+      cy.get('[data-field-name="amount_plan"] .input__input')
+        .should('be.empty')
+    }
   }
 
   // Сумма факт
@@ -134,7 +140,7 @@ class FillPayment {
       .click()
     cy.get('.dp-today')
       .click()
-    cy.get('[data-field-name="date_plan"] .date__input')
+    cy.get('[data-field-name="date_fact"] .date__input')
       .should('have.value', CURRENT_DATE)
   }
 
@@ -165,6 +171,10 @@ class FillPayment {
             .click()
           cy.get('[data-field-name="source_status"] .multiselect__single')
             .should('contain', text)
+    }
+    else if (text == '') {
+      cy.get('[data-field-name="source_status"] .multiselect__single')
+        .should('not.be')
     }
     else {
       assert(false, 'Incorrect input in FillPayment.documentsStatus(status)')

@@ -53,4 +53,67 @@ describe('Payment adding positive testing', () => {
         find.deletePayment()
     })
   })
+
+  it('Payment adding and deletion test 3', () => {
+    // Открыть форму добавления платежа
+    fill.openForm()
+
+    // Использовать данные для заполнения платежа из json файла
+    cy.fixture('payment_adding_income_positive_3')
+      .then((inputs) => {
+        // Заполнение всех полей, используя данные из фикстуры
+        fill.byFixture(inputs)
+
+        // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
+        fill.addPaymentToTable()
+        fill.closeForm()
+
+        // Поиск и удаление добавленного платежа
+        find.findPayment(inputs.description)
+        find.openPayment(inputs.description)
+        find.deletePayment()
+    })
+  })
+
+  it('Payment adding and deletion test 4', () => {
+    // Открыть форму добавления платежа
+    fill.openForm()
+
+    // Использовать данные для заполнения платежа из json файла
+    cy.fixture('payment_adding_income_positive_4')
+      .then((inputs) => {
+        // Заполнение всех полей, используя данные из фикстуры
+        fill.byFixture(inputs)
+
+        // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
+        fill.addPaymentToTable()
+        fill.closeForm()
+
+        // Поиск и удаление добавленного платежа
+        find.findPayment(inputs.description)
+        find.openPayment(inputs.description)
+        find.deletePayment()
+    })
+  })
+
+  it('Payment adding and deletion test 5', () => {
+    // Открыть форму добавления платежа
+    fill.openForm()
+
+    // Использовать данные для заполнения платежа из json файла
+    cy.fixture('payment_adding_income_positive_5')
+      .then((inputs) => {
+        // Заполнение всех полей, используя данные из фикстуры
+        fill.byFixture(inputs)
+
+        // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
+        fill.addPaymentToTable()
+        fill.closeForm()
+
+        // Поиск и удаление добавленного платежа
+        find.findPayment(inputs.description)
+        find.openPayment(inputs.description)
+        find.deletePayment()
+    })
+  })
 })
