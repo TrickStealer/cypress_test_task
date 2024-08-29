@@ -1,8 +1,8 @@
-import FillPayment from './fill_payment'
-import FindChangePayment from './find_change_payment'
-import VisitLoginSite from './visit_login_site'
+import FillPayment from '../fill_payment'
+import FindChangePayment from '../find_change_payment'
+import VisitLoginSite from '../visit_login_site'
 
-describe('Payment adding positive testing', () => {
+describe('Income payment adding positive testing', () => {
   const fill = new FillPayment()
   const find = new FindChangePayment()
   const visit = new VisitLoginSite()
@@ -12,12 +12,12 @@ describe('Payment adding positive testing', () => {
     visit.loginFromJson('user-admin')
   })
 
-  it('Payment adding and deletion test 1', () => {
+  it('Income payment adding and deletion test 1', () => {
     // Открыть форму добавления платежа
     fill.openForm()
 
     // Использовать данные для заполнения платежа из json файла
-    cy.fixture('payment_adding_income_positive_1')
+    cy.fixture('income_payment_adding_positive_1')
       .then((inputs) => {
         // Заполнение всех полей, используя данные из фикстуры
         fill.byFixture(inputs)
@@ -33,12 +33,12 @@ describe('Payment adding positive testing', () => {
     })
   })
 
-  it('Payment adding and deletion test 2', () => {
+  it('Income payment adding and deletion test 2', () => {
     // Открыть форму добавления платежа
     fill.openForm()
 
     // Использовать данные для заполнения платежа из json файла
-    cy.fixture('payment_adding_income_positive_2')
+    cy.fixture('income_payment_adding_positive_2')
       .then((inputs) => {
         // Заполнение всех полей, используя данные из фикстуры
         fill.byFixture(inputs)
@@ -54,12 +54,12 @@ describe('Payment adding positive testing', () => {
     })
   })
 
-  it('Payment adding and deletion test 3', () => {
+  it('Income payment adding and deletion test 3', () => {
     // Открыть форму добавления платежа
     fill.openForm()
 
     // Использовать данные для заполнения платежа из json файла
-    cy.fixture('payment_adding_income_positive_3')
+    cy.fixture('income_payment_adding_positive_3')
       .then((inputs) => {
         // Заполнение всех полей, используя данные из фикстуры
         fill.byFixture(inputs)
@@ -75,12 +75,12 @@ describe('Payment adding positive testing', () => {
     })
   })
 
-  it('Payment adding and deletion test 4', () => {
+  it('Income payment adding and deletion test 4', () => {
     // Открыть форму добавления платежа
     fill.openForm()
 
     // Использовать данные для заполнения платежа из json файла
-    cy.fixture('payment_adding_income_positive_4')
+    cy.fixture('income_payment_adding_positive_4')
       .then((inputs) => {
         // Заполнение всех полей, используя данные из фикстуры
         fill.byFixture(inputs)
@@ -96,12 +96,12 @@ describe('Payment adding positive testing', () => {
     })
   })
 
-  it('Payment adding and deletion test 5', () => {
+  it('Income payment adding and deletion test 5', () => {
     // Открыть форму добавления платежа
     fill.openForm()
 
     // Использовать данные для заполнения платежа из json файла
-    cy.fixture('payment_adding_income_positive_5')
+    cy.fixture('income_payment_adding_positive_5')
       .then((inputs) => {
         // Заполнение всех полей, используя данные из фикстуры
         fill.byFixture(inputs)
