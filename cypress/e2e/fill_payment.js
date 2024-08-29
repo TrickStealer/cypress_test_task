@@ -54,11 +54,11 @@ class FillPayment {
 
   // Описание
   description(text) {
-    this.typeTextField('[data-field-name="description"] .input__input', text)
+    this.textField('[data-field-name="description"]', text)
   }
 
   // Статус "Активен"
-  statusActive(active) {
+  statusActive() {
     cy.get('[data-field-name="statuses"] .radio-group__checkbox--first .checkbox__label')
       .should('contain', 'Активен')
       .prev()
@@ -90,9 +90,16 @@ class FillPayment {
 
   // Сумма факт
   amountFact(amount) {
-    cy.get('[data-field-name="amount_fact"] .input__input')
-      .type(amount)
-      .should('have.value', amount)
+    if (amount != "") {
+      cy.get('[data-field-name="amount_fact"] .input__input')
+        .type(amount)
+        .should('have.value', amount)
+    }
+    else {
+      cy.get('[data-field-name="amount_fact"] .input__input')
+        .should('be.empty')
+    }
+
   }
 
   // Статус оплаты "Не оплачен"
@@ -146,13 +153,24 @@ class FillPayment {
 
   // Источник
   source(text){
-    this.fillTheMultiselect('[data-field-name="source"]', text)
+    this.multiselectField('[data-field-name="source"]', text)
   }
 
   // Источник уточнение
   sourceAdditional(text){
-    this.typeTextField('[data-field-name="source_additional_id"] .input__input', text)
+    this.textField('[data-field-name="source_additional_id"]', text)
   }
+
+  // Статья расходов
+  category(text){
+    this.multiselectField('[data-field-name="category"]', text)
+  }
+
+  // Статья расходов, уточнение
+  categoryAdditional(text){
+    this.textField('[data-field-name="category_additional_id"]', text)
+  }
+
 
   // Статус документов. Варианты переменной text:
     // Счет выставлен
@@ -177,28 +195,28 @@ class FillPayment {
         .should('not.be')
     }
     else {
-      assert(false, 'Incorrect input in FillPayment.documentsStatus(status)')
+      assert(false, 'Incorrect input in FillPayment.documentsStatus()')
     }
   }
 
   // Юридическое лицо
   companyOwn(text){
-    this.fillTheMultiselect('[data-field-name="company_own"]', text)
+    this.multiselectField('[data-field-name="company_own"]', text)
   }
 
   // Контрагент
   companyClient(text){
-    this.fillTheMultiselect('[data-field-name="company_client"]', text)
+    this.multiselectField('[data-field-name="company_client"]', text)
   }
 
   // Счет отправителя
   accountSender(text){
-    this.fillTheMultiselect('[data-field-name="account_sender"]', text)
+    this.multiselectField('[data-field-name="account_sender"]', text)
   }
 
   // Счет получателя
   accountRecipient(text){
-    this.fillTheMultiselect('[data-field-name="account_recipient"]', text)
+    this.multiselectField('[data-field-name="account_recipient"]', text)
   }
 
   // Тэги (задаём количество тегов, и заполняется тегами типа "Тэг 1", "Тэг 2"...)
@@ -251,11 +269,11 @@ class FillPayment {
     this.description(inputs.description) // Описание
 
     if (inputs.statusActive){
-      this.statusActive() // Статус
+      this.statusActive() // Статус "Активен"
     }
 
     if (inputs.statusChecked){
-      this.statusChecked() // Статус
+      this.statusChecked() // Статус "Проверен"
     }
 
     this.amountPlan(inputs.amountPlan)  // Сумма план
@@ -278,12 +296,24 @@ class FillPayment {
       this.datePlan() // Дата план
     }
     if (inputs.dateFact == "current") {
-    this.dateFact() // Дата факт
+      this.dateFact() // Дата факт
     }
 
-    this.source(inputs.source)                      // Источник
-    this.sourceAdditional(inputs.sourceAdditional)  // Источник
-    this.documentsStatus(inputs.documentsStatus)    // Статус документов
+    if (inputs.operationType == "income"){
+      this.source(inputs.source)                      // Источник
+      this.sourceAdditional(inputs.sourceAdditional)  // Источник, уточнение
+      this.documentsStatus(inputs.documentsStatus)    // Статус документов
+    }
+    else if (inputs.operationType == "expense"){
+      this.category(inputs.category)                      // Статья расходов
+      this.categoryAdditional(inputs.categoryAdditional)  // Статья расходов, уточнение
+    }
+    else if (inputs.operationType == "transfer"){
+
+    }
+    else{
+      assert(false, 'Incorrect "operationType" in json file')
+    }
 
     this.companyOwn(inputs.companyOwn)              // Юридическое лицо
     this.companyClient(inputs.companyClient)        // Контрагент
@@ -294,7 +324,8 @@ class FillPayment {
     this.bankID()           // ID в банке	[Автоматически заполняется]
   }
 
-  fillTheMultiselect(dataFieldName, text){
+  // Запись в поле с вбором из выпадающего списка
+  multiselectField(dataFieldName, text){
     if (text != "") {
       cy.get(dataFieldName + ' .multiselect__placeholder')
         .click()
@@ -314,15 +345,16 @@ class FillPayment {
     }
   }
 
-  typeTextField(element, text) {
+  // Запись в текстовое поле
+  textField(dataFieldName, text) {
     if (text != "") {
-      cy.get(element)
+      cy.get(dataFieldName + ' .input__input')
         .type(text)
         .invoke('val')
         .should('eq', text)
     }
     else {
-      cy.get(element)
+      cy.get(dataFieldName + ' .input__input')
         .invoke('val')
         .should('be.empty')
     }

@@ -1,10 +1,10 @@
 import FillPayment from '../fill_payment'
-import FindChangePayment from '../find_change_payment'
+import CheckPayment from '../check_payment'
 import VisitLoginSite from '../visit_login_site'
 
 describe('Expense payment adding positive testing', () => {
   const fill = new FillPayment()
-  const find = new FindChangePayment()
+  const check = new CheckPayment()
   const visit = new VisitLoginSite()
 
   beforeEach('Log in', () => {
@@ -27,9 +27,10 @@ describe('Expense payment adding positive testing', () => {
         fill.closeForm()
 
         // Поиск и удаление добавленного платежа
-        find.findPayment(inputs.description)
-        find.openPayment(inputs.description)
-        find.deletePayment()
+        check.findPayment(inputs.description)
+        check.openPayment(inputs.description)
+        check.byFixture(inputs)
+        // check.deletePayment()
     })
   })
 })
