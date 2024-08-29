@@ -64,7 +64,7 @@ describe('Payment adding positive testing', () => {
 
         // Поиск и удаление добавленного платежа
         find.findPayment(inputs.description)
-        // find.openPayment(inputs.description)
+        find.openPayment(inputs.description)
         // find.deletePayment()
     })
     // cy.wait(10000)
