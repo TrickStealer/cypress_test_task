@@ -46,8 +46,8 @@ describe('Payment adding positive testing', () => {
         //
         // fill.datePlan() // Дата план:	[Дата тестирования]
         // fill.dateFact() // Дата факт:	[Дата тестирования]
-        //
-        // fill.source(inputs.source)                      // Источник:	Источник 1
+
+        fill.source(inputs.source)                      // Источник:	Источник 1
         // fill.sourceAdditional(inputs.sourceAdditional)  // Источник:	Источник 1
         // fill.documentsStatus(inputs.documentsStatus)    // Статус документов:	Счёт выставлен
         //
@@ -60,11 +60,11 @@ describe('Payment adding positive testing', () => {
         // fill.bankID()           // ID в банке	[Автоматически заполняется]
         //
         // fill.addPaymentToTable()  // Нажать кнопку "Добавить"
-        fill.closeForm()          // Вернуться на страницу "Платежи"
-
-        // Поиск и удаление добавленного платежа
-        find.findPayment(inputs.description)
-        find.openPayment(inputs.description)
+        // fill.closeForm()          // Вернуться на страницу "Платежи"
+        //
+        // // Поиск и удаление добавленного платежа
+        // find.findPayment(inputs.description)
+        // find.openPayment(inputs.description)
         // find.deletePayment()
     })
     // cy.wait(10000)

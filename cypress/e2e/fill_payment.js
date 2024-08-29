@@ -144,15 +144,7 @@ class FillPayment {
 
   // Источник
   source(text){
-    cy.get('[data-field-name="source"] .multiselect__placeholder')
-      .click()
-    cy.get('[data-field-name="source"] .multiselect__input')
-      .type(text)
-    cy.get('[data-field-name="source"] .multiselect__option')
-      .contains(text)
-      .click()
-    cy.get('[data-field-name="source"] .multiselect__single')
-      .should('contain', text)
+    this.fillTheMultiselect('[data-field-name="source"]', text)
   }
 
   // Источник уточнение
@@ -268,6 +260,24 @@ class FillPayment {
   closeForm(){
     cy.get('.breadcrumb').contains('Платежи').parent().click()
     cy.get('.typography--type-heading').should('contain', 'Платежи')
+  }
+
+  fillTheMultiselect(dataFieldName, text){
+    cy.get(dataFieldName + ' .multiselect__placeholder')
+      .click()
+    cy.get(dataFieldName + ' .multiselect__input')
+      .type(text)
+    cy.get(dataFieldName + ' .multiselect__option')
+      .each(($el) => {
+        if ($el.text() == text) {
+          cy.wrap($el).click()
+          return false
+        }
+      })
+    cy.get(dataFieldName + ' .multiselect__single')
+      .then(($el) => {
+        assert($el.text() == text, 'Check the multiselect filling')
+      })
   }
 }
 
