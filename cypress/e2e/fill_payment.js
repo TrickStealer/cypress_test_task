@@ -180,57 +180,25 @@ class FillPayment {
 
   // Юридическое лицо
   companyOwn(text){
-    cy.get('[data-field-name="company_own"] .multiselect__placeholder')
-      .click()
-    cy.get('[data-field-name="company_own"] .multiselect__input')
-      .type(text)
-    cy.get('[data-field-name="company_own"] .multiselect__option')
-      .contains(text)
-      .click()
-    cy.get('[data-field-name="company_own"] .multiselect__single')
-      .should('contain', text)
+    this.fillTheMultiselect('[data-field-name="company_own"]', text)
   }
 
   // Контрагент
   companyClient(text){
-    cy.get('[data-field-name="company_client"] .multiselect__placeholder')
-      .click()
-    cy.get('[data-field-name="company_client"] .multiselect__input')
-      .type(text)
-    cy.get('[data-field-name="company_client"] .multiselect__option')
-      .contains(text)
-      .click()
-    cy.get('[data-field-name="company_client"] .multiselect__single')
-      .should('contain', text)
+    this.fillTheMultiselect('[data-field-name="company_client"]', text)
   }
 
   // Счет отправителя
   accountSender(text){
-    cy.get('[data-field-name="account_sender"] .multiselect__placeholder')
-      .click()
-    cy.get('[data-field-name="account_sender"] .multiselect__input')
-      .type(text)
-    cy.get('[data-field-name="account_sender"] .multiselect__option')
-      .contains(text)
-      .click()
-    cy.get('[data-field-name="account_sender"] .multiselect__single')
-      .should('contain', text)
+    this.fillTheMultiselect('[data-field-name="account_sender"]', text)
   }
 
   // Счет получателя
   accountRecipient(text){
-    cy.get('[data-field-name="account_recipient"] .multiselect__placeholder')
-      .click()
-    cy.get('[data-field-name="account_recipient"] .multiselect__input')
-      .type(text)
-    cy.get('[data-field-name="account_recipient"] .multiselect__option')
-      .contains(text)
-      .click()
-    cy.get('[data-field-name="account_recipient"] .multiselect__single')
-      .should('contain', text)
+    this.fillTheMultiselect('[data-field-name="account_recipient"]', text)
   }
 
-  // Тэги
+  // Тэги (задаём количество тегов, и заполняется тегами типа "Тэг 1", "Тэг 2"...)
   tags(number){
     const tag = 'Тэг '
     for (let i = 1; i <= number; i++) {
@@ -260,6 +228,51 @@ class FillPayment {
   closeForm(){
     cy.get('.breadcrumb').contains('Платежи').parent().click()
     cy.get('.typography--type-heading').should('contain', 'Платежи')
+  }
+
+  // Заполнение всех полей, используя данные из фикстуры
+  byFixture(inputs){
+    if (inputs.operationType == "income"){
+      this.operationType_Income() // Тип операции "Доход/приход"
+    }
+    else if (inputs.operationType == "expense"){
+      this.operationType_Expense() // Тип операции "Расход"
+    }
+    else if (inputs.operationType == "transfer"){
+      this.operationType_Transfer() // Тип операции "Перевод средств"
+    }
+    else{
+      assert(false, 'Incorrect "operationType" in json file')
+    }
+
+    this.description(inputs.description) // Описание
+
+    if (inputs.statusActive){
+      this.statusActive() // Статус
+    }
+
+    if (inputs.statusChecked){
+      this.statusChecked() // Статус
+    }
+
+    this.amountPlan(inputs.amountPlan)  // Сумма план
+    this.amountFact(inputs.amountFact)  // Сумма факт
+    this.paymentStatus_NotPayed()       // Статус оплаты
+
+    this.datePlan() // Дата план
+    this.dateFact() // Дата факт
+
+    this.source(inputs.source)                      // Источник
+    this.sourceAdditional(inputs.sourceAdditional)  // Источник
+    this.documentsStatus(inputs.documentsStatus)    // Статус документов
+
+    this.companyOwn(inputs.companyOwn)              // Юридическое лицо
+    this.companyClient(inputs.companyClient)        // Контрагент
+    this.accountSender(inputs.accountSender)        // Счет отправителя
+    this.accountRecipient(inputs.accountRecipient)  // Счет получателя
+
+    this.tags(inputs.tags)  // Тэги
+    this.bankID()           // ID в банке	[Автоматически заполняется]
   }
 
   fillTheMultiselect(dataFieldName, text){
