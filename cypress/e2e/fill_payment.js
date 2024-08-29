@@ -54,11 +54,7 @@ class FillPayment {
 
   // Описание
   description(text) {
-    cy.get('[data-field-name="description"] .form-field')
-      .type(text)
-    cy.get('[data-field-name="description"] .input__input')
-      .invoke('val')
-      .should('eq', text)
+    this.typeTextField('[data-field-name="description"] .input__input', text)
   }
 
   // Статус "Активен"
@@ -149,10 +145,7 @@ class FillPayment {
 
   // Источник уточнение
   sourceAdditional(text){
-    cy.get('[data-field-name="source_additional_id"] .input__input')
-      .type(text)
-      .invoke('val')
-      .should('eq', text)
+    this.typeTextField('[data-field-name="source_additional_id"] .input__input', text)
   }
 
   // Статус документов. Варианты переменной text:
@@ -257,10 +250,26 @@ class FillPayment {
 
     this.amountPlan(inputs.amountPlan)  // Сумма план
     this.amountFact(inputs.amountFact)  // Сумма факт
-    this.paymentStatus_NotPayed()       // Статус оплаты
 
-    this.datePlan() // Дата план
+    if (inputs.paymentStatus == "Payed"){
+      this.paymentStatus_Payed() // Статус оплаты "Оплачен"
+    }
+    else if (inputs.paymentStatus == "NotPayed"){
+      this.paymentStatus_NotPayed() // Статус оплаты "Не оплачен"
+    }
+    else if (inputs.paymentStatus == "PartlyPayed"){
+      this.paymentStatus_PartlyPayed() // Статус оплаты "Частично оплачен"
+    }
+    else{
+      assert(false, 'Incorrect "paymentStatus" in json file')
+    }
+
+    if (inputs.datePlan == "current") {
+      this.datePlan() // Дата план
+    }
+    if (inputs.dateFact == "current") {
     this.dateFact() // Дата факт
+    }
 
     this.source(inputs.source)                      // Источник
     this.sourceAdditional(inputs.sourceAdditional)  // Источник
@@ -276,21 +285,37 @@ class FillPayment {
   }
 
   fillTheMultiselect(dataFieldName, text){
-    cy.get(dataFieldName + ' .multiselect__placeholder')
-      .click()
-    cy.get(dataFieldName + ' .multiselect__input')
-      .type(text)
-    cy.get(dataFieldName + ' .multiselect__option')
-      .each(($el) => {
-        if ($el.text() == text) {
-          cy.wrap($el).click()
-          return false
-        }
-      })
-    cy.get(dataFieldName + ' .multiselect__single')
-      .then(($el) => {
-        assert($el.text() == text, 'Check the multiselect filling')
-      })
+    if (text != "") {
+      cy.get(dataFieldName + ' .multiselect__placeholder')
+        .click()
+      cy.get(dataFieldName + ' .multiselect__input')
+        .type(text)
+      cy.get(dataFieldName + ' .multiselect__option')
+        .each(($el) => {
+          if ($el.text() == text) {
+            cy.wrap($el).click()
+            return false
+          }
+        })
+      cy.get(dataFieldName + ' .multiselect__single')
+        .then(($el) => {
+          assert($el.text() == text, 'Check the multiselect filling')
+        })
+    }
+  }
+
+  typeTextField(element, text) {
+    if (text != "") {
+      cy.get(element)
+        .type(text)
+        .invoke('val')
+        .should('eq', text)
+    }
+    else {
+      cy.get(element)
+        .invoke('val')
+        .should('be.empty')
+    }
   }
 }
 

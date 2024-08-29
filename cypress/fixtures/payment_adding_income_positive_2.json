@@ -1,0 +1,25 @@
+{
+  "operationType": "income",
+  "description": "Test 2",
+  "statusActive": false,
+  "statusChecked": true,
+
+  "amountPlan": -2000,
+  "amountFact": -2000,
+  "paymentStatus": "Payed",
+
+  "datePlan": "",
+  "dateFact": "",
+
+  "source": "",
+  "sourceAdditional": "",
+  "documentsStatus": "Счет отправлен",
+
+  "companyOwn": "Юридическое лицо 2",
+  "companyClient": "Контрагент 2",
+  "accountSender": "",
+  "accountRecipient": "",
+
+  "tags": 2,
+  "bankID": "disable"
+}

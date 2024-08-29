@@ -6,7 +6,7 @@
 
   "amountPlan": 2000,
   "amountFact": 2000,
-  "paymentStatus": "notPayed",
+  "paymentStatus": "NotPayed",
 
   "datePlan": "current",
   "dateFact": "current",
@@ -20,6 +20,6 @@
   "accountSender": "Счет отправителя 1",
   "accountRecipient": "Счет получателя 1",
 
-  "tags": 2,
+  "tags": 1,
   "bankID": "disable"
 }

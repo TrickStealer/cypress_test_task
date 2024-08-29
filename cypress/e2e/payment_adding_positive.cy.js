@@ -31,7 +31,26 @@ describe('Payment adding positive testing', () => {
         find.openPayment(inputs.description)
         find.deletePayment()
     })
-    // cy.wait(10000)
+  })
 
+  it('Payment adding and deletion test 2', () => {
+    // Открыть форму добавления платежа
+    fill.openForm()
+
+    // Использовать данные для заполнения платежа из json файла
+    cy.fixture('payment_adding_income_positive_2')
+      .then((inputs) => {
+        // Заполнение всех полей, используя данные из фикстуры
+        fill.byFixture(inputs)
+
+        // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
+        fill.addPaymentToTable()
+        fill.closeForm()
+
+        // Поиск и удаление добавленного платежа
+        find.findPayment(inputs.description)
+        find.openPayment(inputs.description)
+        find.deletePayment()
+    })
   })
 })
