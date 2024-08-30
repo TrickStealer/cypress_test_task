@@ -1,6 +1,6 @@
 // Получение текущей даты
 function currentDate(){
-  let current_date = new Date();
+  let current_date = new Date()
   const day = current_date.getDate()
   const day_string = day < 10 ? '0' + day : day
 
@@ -15,40 +15,53 @@ function currentDate(){
 const CURRENT_DATE = currentDate()
 
 class CheckPayment {
-  // Найти платёж
-  findPayment(text){
-    let isPaymentHere = false
-    cy.get('.input__content')
-      .type(text)
-      .type('{enter}')
-      .type('{enter}') // Временный костыль, чтобы тесты не падали из-за бага
-      // Поиск происходит только после двух нажатий Enter
-    cy.wait(1000) // Чтобы страница успела прогрузиться
-    cy.get('.table__record span')
-      .each(($el) => {
-        if ($el.text() == text){
-          isPaymentHere = true
-        }
-      }).then(() => {
-        assert(isPaymentHere, 'Find payment in table')
-      })
+  // Проверка всех полей платежа по данным из фикстуры
+  byFixture(inputs){
+    this.operationType(inputs.operationType)
+    this.description(inputs.description)
+
+    this.statusActive(inputs.statusActive)
+    this.statusChecked(inputs.statusChecked)
+
+    this.amountPlan(inputs.amountPlan)
+    this.amountFact(inputs.amountFact)
+
+    this.paymentStatus(inputs.paymentStatus)
+
+    this.datePlan(inputs.datePlan)
+    this.dateFact(inputs.dateFact)
+
+    if (inputs.operationType == "income"){
+      this.source(inputs.source)
+      this.sourceAdditional(inputs.sourceAdditional)
+      this.documentsStatus(inputs.documentsStatus)
+    }
+    else if (inputs.operationType == "expense"){
+      this.category(inputs.category)
+      this.categoryAdditional(inputs.categoryAdditional)
+    }
+    else if (inputs.operationType == "transfer"){
+
+    }
+    else{
+      assert(false, 'Incorrect "operationType" in json file')
+    }
+
+    this.companyOwn(inputs.companyOwn)
+    this.companyClient(inputs.companyClient)
+
+    // Временный костыль, чтобы тесты не падали из-за известного бага.
+    // При типе операции "Расход" счёт отправителя и счёт получателя не сохраняются
+    if (inputs.operationType != "expense"){
+      this.accountSender(inputs.accountSender)
+      this.accountRecipient(inputs.accountRecipient)
+    }
+
+    this.tags(inputs.tags)
+    this.bankID()
   }
 
-  // Открыть платёж по надписи в описании и проверить, то это подходящий
-  openPayment(text){
-    cy.get('.table__record span')
-      .each(($el) => {
-        if ($el.text() == text){
-          cy.wrap($el).click()
-          return false
-        }
-      })
 
-    cy.get('.typography--type-heading')
-      .should('contain','Редактировать платёж')
-
-    this.description(text)
-  }
 
   // Проврка типа операции
   operationType(text){
@@ -267,52 +280,6 @@ class CheckPayment {
       .should('be.disabled')
   }
 
-  // Проверка всех полей платежа по данным из фикстуры
-  byFixture(inputs){
-    this.operationType(inputs.operationType)
-    // Описание проверяется при открытии страницы, поэтому тут его не проверяем
-
-    this.statusActive(inputs.statusActive)
-    this.statusChecked(inputs.statusChecked)
-
-    this.amountPlan(inputs.amountPlan)
-    this.amountFact(inputs.amountFact)
-
-    this.paymentStatus(inputs.paymentStatus)
-
-    this.datePlan(inputs.datePlan)
-    this.dateFact(inputs.dateFact)
-
-    if (inputs.operationType == "income"){
-      this.source(inputs.source)
-      this.sourceAdditional(inputs.sourceAdditional)
-      this.documentsStatus(inputs.documentsStatus)
-    }
-    else if (inputs.operationType == "expense"){
-      this.category(inputs.category)
-      this.categoryAdditional(inputs.categoryAdditional)
-    }
-    else if (inputs.operationType == "transfer"){
-
-    }
-    else{
-      assert(false, 'Incorrect "operationType" in json file')
-    }
-
-    this.companyOwn(inputs.companyOwn)
-    this.companyClient(inputs.companyClient)
-
-    // Временный костыль, чтобы тесты не падали из-за известного бага.
-    // При типе операции "Расход" счёт отправителя и счёт получателя не сохраняются
-    if (inputs.operationType != "expense"){
-      this.accountSender(inputs.accountSender)
-      this.accountRecipient(inputs.accountRecipient)
-    }
-
-    this.tags(inputs.tags)
-    this.bankID()
-  }
-
   // Проверка поля с вбором из выпадающего списка
   multiselectField(dataFieldName, text){
     if (text != "") {
@@ -340,15 +307,6 @@ class CheckPayment {
         .invoke('val')
         .should('be.empty')
     }
-  }
-
-  // Удалить открытый платёж
-  deletePayment(){
-    cy.get('.typography--type-heading')
-      .should('contain','Редактировать платёж')
-    cy.contains('Удалить').click()
-    cy.get('.swal2-confirm').click()
-    cy.get('.typography--type-heading').should('contain', 'Платежи')
   }
 }
 

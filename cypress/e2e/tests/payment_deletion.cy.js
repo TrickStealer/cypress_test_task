@@ -1,9 +1,9 @@
 import VisitLoginSite from '../visit_login_site'
-import CheckPayment from '../check_payment'
+import InterfaceManipulations from '../interface_manipulations'
 
 describe('Expense payment adding positive testing', () => {
   const visit = new VisitLoginSite()
-  const check = new CheckPayment()
+  const ui = new InterfaceManipulations()
 
   beforeEach('Log in', () => {
     visit.site('/')
@@ -14,9 +14,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_1')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -24,9 +24,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_2')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -34,9 +34,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_3')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -44,9 +44,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_4')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -54,9 +54,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_5')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -64,9 +64,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_1')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -74,9 +74,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_2')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -84,9 +84,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_3')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 
@@ -94,9 +94,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_4')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
+        ui.deletePayment()
     })
   })
 })

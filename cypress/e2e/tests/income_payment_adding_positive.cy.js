@@ -1,11 +1,13 @@
+import VisitLoginSite from '../visit_login_site'
+import InterfaceManipulations from '../interface_manipulations'
 import FillPayment from '../fill_payment'
 import CheckPayment from '../check_payment'
-import VisitLoginSite from '../visit_login_site'
 
 describe('Income payment adding positive testing', () => {
+  const visit = new VisitLoginSite()
+  const ui = new InterfaceManipulations()
   const fill = new FillPayment()
   const check = new CheckPayment()
-  const visit = new VisitLoginSite()
 
   beforeEach('Log in', () => {
     visit.site('/')
@@ -14,7 +16,7 @@ describe('Income payment adding positive testing', () => {
 
   it('Income payment adding and deletion test 1', () => {
     // Открыть форму добавления платежа
-    fill.openForm()
+    ui.openForm()
 
     // Использовать данные для заполнения платежа из json файла
     cy.fixture('income_payment_adding_positive_1')
@@ -23,20 +25,20 @@ describe('Income payment adding positive testing', () => {
         fill.byFixture(inputs)
 
         // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
+        ui.addPaymentToTable()
+        ui.closeForm()
 
-        // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
+        // Поиск, проверка и удаление добавленного платежа
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
         check.byFixture(inputs)
-        check.deletePayment()
+        ui.deletePayment()
     })
   })
 
   it('Income payment adding and deletion test 2', () => {
     // Открыть форму добавления платежа
-    fill.openForm()
+    ui.openForm()
 
     // Использовать данные для заполнения платежа из json файла
     cy.fixture('income_payment_adding_positive_2')
@@ -45,20 +47,20 @@ describe('Income payment adding positive testing', () => {
         fill.byFixture(inputs)
 
         // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
+        ui.addPaymentToTable()
+        ui.closeForm()
 
-        // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
+        // Поиск, проверка и удаление добавленного платежа
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
         check.byFixture(inputs)
-        check.deletePayment()
+        ui.deletePayment()
     })
   })
 
   it('Income payment adding and deletion test 3', () => {
     // Открыть форму добавления платежа
-    fill.openForm()
+    ui.openForm()
 
     // Использовать данные для заполнения платежа из json файла
     cy.fixture('income_payment_adding_positive_3')
@@ -67,20 +69,20 @@ describe('Income payment adding positive testing', () => {
         fill.byFixture(inputs)
 
         // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
+        ui.addPaymentToTable()
+        ui.closeForm()
 
-        // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
+        // Поиск, проверка и удаление добавленного платежа
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
         check.byFixture(inputs)
-        check.deletePayment()
+        ui.deletePayment()
     })
   })
 
   it('Income payment adding and deletion test 4', () => {
     // Открыть форму добавления платежа
-    fill.openForm()
+    ui.openForm()
 
     // Использовать данные для заполнения платежа из json файла
     cy.fixture('income_payment_adding_positive_4')
@@ -89,20 +91,20 @@ describe('Income payment adding positive testing', () => {
         fill.byFixture(inputs)
 
         // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
+        ui.addPaymentToTable()
+        ui.closeForm()
 
-        // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
+        // Поиск, проверка и удаление добавленного платежа
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
         check.byFixture(inputs)
-        check.deletePayment()
+        ui.deletePayment()
     })
   })
 
   it('Income payment adding and deletion test 5', () => {
     // Открыть форму добавления платежа
-    fill.openForm()
+    ui.openForm()
 
     // Использовать данные для заполнения платежа из json файла
     cy.fixture('income_payment_adding_positive_5')
@@ -111,14 +113,14 @@ describe('Income payment adding positive testing', () => {
         fill.byFixture(inputs)
 
         // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
+        ui.addPaymentToTable()
+        ui.closeForm()
 
-        // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
+        // Поиск, проверка и удаление добавленного платежа
+        ui.findPayment(inputs.description)
+        ui.openPayment(inputs.description)
         check.byFixture(inputs)
-        check.deletePayment()
+        ui.deletePayment()
     })
   })
 })
