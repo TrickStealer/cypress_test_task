@@ -1,7 +1,7 @@
 # cypress_test_task
 ### Cypress project for web application end2end testing  
 
-
+  
 
 Application: https://fabrique:fabrique@finance.dev.fabrique.studio/
 
@@ -9,7 +9,7 @@ For testing algorithm i used testing check-list, first list of table:
 
 https://docs.google.com/spreadsheets/d/1f_EVIetWqd8yS2jIse13q9Fi6vEY3Ez0M5DLnTqtfxc/edit?usp=sharing  
 
-
+  
 
 Spec files are located in **cypress/e2e/tests/**
 
@@ -18,6 +18,8 @@ Spec files are located in **cypress/e2e/tests/**
 |income_payment_adding_positive.cy.js| Positive testing of adding payments with **income type.**<br/>Includes opening the payment adding form, filling it, check and delete added payment. |
 |expense_payment_adding_positive.cy.js| Positive testing of adding payments with **expense type**.<br/>Includes opening the payment adding form, filling it, check and delete added payment. |
 |payment_deletion.cy.js| Not for testing. Automation of payments deletion. Necessary when testing specs goes not fully. |
+
+​    
 
   
 
@@ -31,6 +33,8 @@ Files with methods and its classes are located in **cypress/e2e/**
 | interface_manipulations.js | InterfaceManipulations | Methods for moving between pages on the web site, clicking buttons searching payments in table etc. |
 | fill_payment.js            | FillPayment            | Methods for filling fields at opened payment form.           |
 | check_payment.js           | CheckPayment           | Methods for check fields at opened payment form.             |
+
+  
 
   
 
