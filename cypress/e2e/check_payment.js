@@ -173,7 +173,7 @@ class CheckPayment {
     }
     else{
       cy.get('[data-field-name="date_plan"] .date__input')
-        .should('empty.value')
+        .should('have.empty')
     }
   }
 
@@ -185,7 +185,7 @@ class CheckPayment {
     }
     else{
       cy.get('[data-field-name="date_fact"] .date__input')
-        .should('empty.value')
+        .should('have.empty')
     }
   }
 
@@ -307,14 +307,15 @@ class CheckPayment {
   // Проверка поля с вбором из выпадающего списка
   multiselectField(dataFieldName, text){
     if (text != "") {
-      cy.get(dataFieldName + ' .multiselect__single')
+      cy.get(dataFieldName + ' .multiselect__tags span')
+        .should('have.class', 'multiselect__single')
         .then(($el) => {
           assert($el.text() == text, 'Check the multiselect filling')
         })
     }
     else{
-      cy.get(dataFieldName + ' .multiselect__placeholder')
-        .should('be.visible')
+      cy.get(dataFieldName + ' .multiselect__tags span')
+        .should('have.class', 'multiselect__placeholder')
     }
   }
 

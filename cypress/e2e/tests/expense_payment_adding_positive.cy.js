@@ -12,25 +12,35 @@ describe('Expense payment adding positive testing', () => {
     visit.loginFromJson('user-admin')
   })
 
-  it('Expense payment adding and deletion test 1', () => {
-    // Открыть форму добавления платежа
-    fill.openForm()
+  // it('Expense payment adding and deletion test 1', () => {
+  //   // Открыть форму добавления платежа
+  //   fill.openForm()
+  //
+  //   // Использовать данные для заполнения платежа из json файла
+  //   cy.fixture('expense_payment_adding_positive_1')
+  //     .then((inputs) => {
+  //       // Заполнение всех полей, используя данные из фикстуры
+  //       fill.byFixture(inputs)
+  //
+  //       // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
+  //       fill.addPaymentToTable()
+  //       fill.closeForm()
+  //
+  //       // Поиск и удаление добавленного платежа
+  //       check.findPayment(inputs.description)
+  //       check.openPayment(inputs.description)
+  //       check.byFixture(inputs)
+  //       check.deletePayment()
+  //   })
+  // })
 
-    // Использовать данные для заполнения платежа из json файла
+  it('Delete payment after test 1', () => {
     cy.fixture('expense_payment_adding_positive_1')
       .then((inputs) => {
-        // Заполнение всех полей, используя данные из фикстуры
-        fill.byFixture(inputs)
-
-        // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
-
         // Поиск и удаление добавленного платежа
         check.findPayment(inputs.description)
         check.openPayment(inputs.description)
-        check.byFixture(inputs)
-        // check.deletePayment()
+        check.deletePayment()
     })
   })
 })

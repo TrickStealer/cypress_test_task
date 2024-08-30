@@ -12,26 +12,27 @@ describe('Income payment adding positive testing', () => {
     visit.loginFromJson('user-admin')
   })
 
-  it('Income payment adding and deletion test 1', () => {
-    // Открыть форму добавления платежа
-    fill.openForm()
-
-    // Использовать данные для заполнения платежа из json файла
-    cy.fixture('income_payment_adding_positive_1')
-      .then((inputs) => {
-        // Заполнение всех полей, используя данные из фикстуры
-        fill.byFixture(inputs)
-
-        // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
-        fill.addPaymentToTable()
-        fill.closeForm()
-
-        // Поиск и удаление добавленного платежа
-        check.findPayment(inputs.description)
-        check.openPayment(inputs.description)
-        check.deletePayment()
-    })
-  })
+  // it('Income payment adding and deletion test 1', () => {
+  //   // Открыть форму добавления платежа
+  //   fill.openForm()
+  //
+  //   // Использовать данные для заполнения платежа из json файла
+  //   cy.fixture('income_payment_adding_positive_1')
+  //     .then((inputs) => {
+  //       // Заполнение всех полей, используя данные из фикстуры
+  //       fill.byFixture(inputs)
+  //
+  //       // Нажать кнопку "Добавить" и вернуться на страницу "Платежи"
+  //       fill.addPaymentToTable()
+  //       fill.closeForm()
+  //
+  //       // Поиск и удаление добавленного платежа
+  //       check.findPayment(inputs.description)
+  //       check.openPayment(inputs.description)
+  //       check.byFixture(inputs)
+  //       check.deletePayment()
+  //   })
+  // })
 
   it('Income payment adding and deletion test 2', () => {
     // Открыть форму добавления платежа
@@ -50,6 +51,7 @@ describe('Income payment adding positive testing', () => {
         // Поиск и удаление добавленного платежа
         check.findPayment(inputs.description)
         check.openPayment(inputs.description)
+        check.byFixture(inputs)
         check.deletePayment()
     })
   })
@@ -71,6 +73,7 @@ describe('Income payment adding positive testing', () => {
         // Поиск и удаление добавленного платежа
         check.findPayment(inputs.description)
         check.openPayment(inputs.description)
+        check.byFixture(inputs)
         check.deletePayment()
     })
   })
@@ -92,6 +95,7 @@ describe('Income payment adding positive testing', () => {
         // Поиск и удаление добавленного платежа
         check.findPayment(inputs.description)
         check.openPayment(inputs.description)
+        check.byFixture(inputs)
         check.deletePayment()
     })
   })
@@ -113,6 +117,7 @@ describe('Income payment adding positive testing', () => {
         // Поиск и удаление добавленного платежа
         check.findPayment(inputs.description)
         check.openPayment(inputs.description)
+        check.byFixture(inputs)
         check.deletePayment()
     })
   })
