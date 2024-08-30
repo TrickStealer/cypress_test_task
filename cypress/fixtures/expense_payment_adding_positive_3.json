@@ -1,0 +1,24 @@
+{
+  "operationType": "expense",
+  "description": "Test 8",
+  "statusActive": true,
+  "statusChecked": true,
+
+  "amountPlan": 0,
+  "amountFact": 2000,
+  "paymentStatus": "PartlyPayed",
+
+  "datePlan": "current",
+  "dateFact": "",
+
+  "category": "Стандартная",
+  "categoryAdditional": "Стандартная",
+
+  "companyOwn": "",
+  "companyClient": "",
+  "accountSender": "Счет отправителя 1",
+  "accountRecipient": "",
+
+  "tags": 5,
+  "bankID": "disable"
+}

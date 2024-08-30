@@ -1,0 +1,24 @@
+{
+  "operationType": "expense",
+  "description": "Test 7",
+  "statusActive": true,
+  "statusChecked": false,
+
+  "amountPlan": -2000,
+  "amountFact": -2000,
+  "paymentStatus": "Payed",
+
+  "datePlan": "",
+  "dateFact": "",
+
+  "category": "Стандартная",
+  "categoryAdditional": "Стандартная",
+
+  "companyOwn": "Юридическое лицо 2",
+  "companyClient": "Контрагент 2",
+  "accountSender": "",
+  "accountRecipient": "",
+
+  "tags": 2,
+  "bankID": "disable"
+}

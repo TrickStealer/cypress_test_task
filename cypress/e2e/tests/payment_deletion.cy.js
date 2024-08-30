@@ -10,7 +10,7 @@ describe('Expense payment adding positive testing', () => {
     visit.loginFromJson('user-admin')
   })
 
-  it('Delete payment after income payment adding test 1', () => {
+  it('Delete payment after Income payment adding test 1', () => {
     cy.fixture('income_payment_adding_positive_1')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
@@ -20,7 +20,7 @@ describe('Expense payment adding positive testing', () => {
     })
   })
 
-  it('Delete payment after income payment adding test 2', () => {
+  it('Delete payment after Income payment adding test 2', () => {
     cy.fixture('income_payment_adding_positive_2')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
@@ -30,7 +30,7 @@ describe('Expense payment adding positive testing', () => {
     })
   })
 
-  it('Delete payment after income payment adding test 3', () => {
+  it('Delete payment after Income payment adding test 3', () => {
     cy.fixture('income_payment_adding_positive_3')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
@@ -40,7 +40,7 @@ describe('Expense payment adding positive testing', () => {
     })
   })
 
-  it('Delete payment after income payment adding test 4', () => {
+  it('Delete payment after Income payment adding test 4', () => {
     cy.fixture('income_payment_adding_positive_4')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
@@ -50,7 +50,7 @@ describe('Expense payment adding positive testing', () => {
     })
   })
 
-  it('Delete payment after income payment adding test 5', () => {
+  it('Delete payment after Income payment adding test 5', () => {
     cy.fixture('income_payment_adding_positive_5')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
@@ -60,8 +60,38 @@ describe('Expense payment adding positive testing', () => {
     })
   })
 
-  it('Delete payment after expense payment adding test 1', () => {
+  it('Delete payment after Expense payment adding test 1', () => {
     cy.fixture('expense_payment_adding_positive_1')
+      .then((inputs) => {
+        // Поиск и удаление добавленного платежа
+        check.findPayment(inputs.description)
+        check.openPayment(inputs.description)
+        check.deletePayment()
+    })
+  })
+
+  it('Delete payment after Expense payment adding test 2', () => {
+    cy.fixture('expense_payment_adding_positive_2')
+      .then((inputs) => {
+        // Поиск и удаление добавленного платежа
+        check.findPayment(inputs.description)
+        check.openPayment(inputs.description)
+        check.deletePayment()
+    })
+  })
+
+  it('Delete payment after Expense payment adding test 3', () => {
+    cy.fixture('expense_payment_adding_positive_3')
+      .then((inputs) => {
+        // Поиск и удаление добавленного платежа
+        check.findPayment(inputs.description)
+        check.openPayment(inputs.description)
+        check.deletePayment()
+    })
+  })
+
+  it('Delete payment after Expense payment adding test 4', () => {
+    cy.fixture('expense_payment_adding_positive_4')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
         check.findPayment(inputs.description)

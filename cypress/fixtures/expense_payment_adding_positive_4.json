@@ -1,0 +1,24 @@
+{
+  "operationType": "expense",
+  "description": "Test 9",
+  "statusActive": true,
+  "statusChecked": false,
+
+  "amountPlan": "",
+  "amountFact": -2000,
+  "paymentStatus": "NotPayed",
+
+  "datePlan": "",
+  "dateFact": "current",
+
+  "category": "Стандартная",
+  "categoryAdditional": "",
+
+  "companyOwn": "ИП Иванов Иван Иванович",
+  "companyClient": "Контрагент 9",
+  "accountSender": "",
+  "accountRecipient": "Счет получателя 1",
+
+  "tags": 0,
+  "bankID": "disable"
+}
