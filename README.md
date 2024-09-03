@@ -5,7 +5,7 @@ Application: https://fabrique:fabrique@finance.dev.fabrique.studio/
 
 For testing algorithm i used testing check-list, first list of table:
 
-https://docs.google.com/spreadsheets/d/1f_EVIetWqd8yS2jIse13q9Fi6vEY3Ez0M5DLnTqtfxc/edit?usp=sharing  
+https://docs.google.com/spreadsheets/d/1zYroPo_W-m-psTZtgbVmRI5Bz9JswnAZYHIBeZQvny8/edit?usp=sharing
 
   <br/>
 
@@ -41,3 +41,19 @@ Json files are located in **cypress/fixtures**
 | user-admin.json                                              | Fixture with login and password for authorization at goal web site.<br/>At real project it should not be in repository. Especially in open repository =) |
 | income_payment_adding_positive_1.json<br/>income_payment_adding_positive_2.json<br/>income_payment_adding_positive_3.json<br/>income_payment_adding_positive_4.json<br/>income_payment_adding_positive_5.json | Fixtures for positive testing of adding payments with **income type.**<br/>Includes testing data for filling description, payment type, amount etc. |
 | expense_payment_adding_positive_1.json<br/>expense_payment_adding_positive_2.json<br/>expense_payment_adding_positive_3.json<br/>expense_payment_adding_positive_4.json | Fixtures for positive testing of adding payments with **expense type.**<br/>Includes testing data for filling description, payment type, amount etc. |
+
+  <br/>
+
+Now few tests in **expense_payment_adding_positive.cy.js** assert with message: 
+
+`Timed out retrying after 4000ms: expected '<span.multiselect__placeholder>' to have class 'multiselect__single'`
+
+Because the application have the bug. Fields "Sender's account" (Счёт отправителя) and "Recipient's account" (Счёт получателя) don't save theirs value after adding the payment. I've written bug report about it: https://docs.google.com/document/d/1e2j81dHhenTu78yEVQRoDCOvwQURorCzI7RFj2WwEvw/edit#heading=h.h7gov5d4ykqd (Bug-8)
+
+  <br/>
+
+In **interface_manipulations.js** in methods findPayment(text) and findPaymentForDeletion(text) i have written twice this method calling:
+
+`.type('{enter}')`
+
+This is a temporary solution. Because the have application the bug. Searching in the table starts only after second click the "Enter" button. I've written bug report about it: https://docs.google.com/document/d/1e2j81dHhenTu78yEVQRoDCOvwQURorCzI7RFj2WwEvw/edit#heading=h.m5xx8olg0phc (Bug-9)
