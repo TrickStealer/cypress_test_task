@@ -52,12 +52,16 @@ Now few tests in **expense_payment_adding_positive.cy.js** assert with message:
 
 `Timed out retrying after 4000ms: expected '<span.multiselect__placeholder>' to have class 'multiselect__single'`
 
-Because the application have the bug. Fields "Sender's account" (Счёт отправителя) and "Recipient's account" (Счёт получателя) don't save theirs value after adding the payment. I've written bug report about it: https://docs.google.com/document/d/1e2j81dHhenTu78yEVQRoDCOvwQURorCzI7RFj2WwEvw/edit#heading=h.h7gov5d4ykqd (Bug-8)
+Because the application have the bug. 
+
+Fields "Sender's account" (Счёт отправителя) and "Recipient's account" (Счёт получателя) don't save theirs value after adding the payment. I've written bug report about it: https://docs.google.com/document/d/1e2j81dHhenTu78yEVQRoDCOvwQURorCzI7RFj2WwEvw/edit#heading=h.h7gov5d4ykqd (Bug-8)
 
   <br/>
 
-In **interface_manipulations.js** in methods findPayment(text) and findPaymentForDeletion(text) i have written twice this method calling:
+In **interface_manipulations.js** in methods **findPayment(text)** and **findPaymentForDeletion(text)** i have written twice this method calling:
 
 `.type('{enter}')`
 
-This is a temporary solution. Because the have application the bug. Searching in the table starts only after second click the "Enter" button. I've written bug report about it: https://docs.google.com/document/d/1e2j81dHhenTu78yEVQRoDCOvwQURorCzI7RFj2WwEvw/edit#heading=h.m5xx8olg0phc (Bug-9)
+This is a temporary solution. Because the application have the bug. 
+
+Searching in the table starts only after second click the "Enter" button. I've written bug report about it: https://docs.google.com/document/d/1e2j81dHhenTu78yEVQRoDCOvwQURorCzI7RFj2WwEvw/edit#heading=h.m5xx8olg0phc (Bug-9)
