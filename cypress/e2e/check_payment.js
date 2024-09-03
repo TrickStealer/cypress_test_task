@@ -50,12 +50,8 @@ class CheckPayment {
     this.companyOwn(inputs.companyOwn)
     this.companyClient(inputs.companyClient)
 
-    // Временный костыль, чтобы тесты не падали из-за известного бага.
-    // При типе операции "Расход" счёт отправителя и счёт получателя не сохраняются
-    if (inputs.operationType != "expense"){
-      this.accountSender(inputs.accountSender)
-      this.accountRecipient(inputs.accountRecipient)
-    }
+    this.accountSender(inputs.accountSender)
+    this.accountRecipient(inputs.accountRecipient)
 
     this.tags(inputs.tags)
     this.bankID()
