@@ -14,9 +14,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_1')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -24,9 +24,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_2')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -34,9 +34,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_3')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -44,9 +44,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_4')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -54,9 +54,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('income_payment_adding_positive_5')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -64,9 +64,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_1')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -74,9 +74,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_2')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -84,9 +84,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_3')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 
@@ -94,9 +94,9 @@ describe('Expense payment adding positive testing', () => {
     cy.fixture('expense_payment_adding_positive_4')
       .then((inputs) => {
         // Поиск и удаление добавленного платежа
-        ui.findPayment(inputs.description)
-        ui.openPayment(inputs.description)
-        ui.deletePayment()
+        ui.findPaymentForDeletion(inputs.description)
+
+
     })
   })
 })
