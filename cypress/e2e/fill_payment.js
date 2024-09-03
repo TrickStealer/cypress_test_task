@@ -8,7 +8,7 @@ function currentDate(){
   const month_string = month < 10 ? '0' + month : month
 
   const year = current_date.getFullYear()
-  const result_string = day + '.' + month_string + '.' + year
+  const result_string = day_string + '.' + month_string + '.' + year
   return result_string
 }
 
